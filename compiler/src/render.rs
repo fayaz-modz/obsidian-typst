@@ -1,12 +1,12 @@
 use fast_image_resize::{self as fr, images::Image};
 use fr::Resizer;
-use typst::model::Document;
+use typst::layout::PagedDocument;
 use wasm_bindgen::Clamped;
 use web_sys::ImageData;
 
 pub fn to_image(
     resizer: &mut Resizer,
-    document: Document,
+    document: PagedDocument,
     pixel_per_pt: f32,
     size: u32,
     display: bool,
@@ -51,6 +51,6 @@ pub fn to_image(
     );
 }
 
-pub fn to_svg(document: Document) -> String {
+pub fn to_svg(document: PagedDocument) -> String {
     typst_svg::svg(&document.pages[0])
 }

@@ -37,7 +37,7 @@ pub fn format_diagnostic(
 ) -> String {
     let mut bytes = Vec::new();
 
-    let mut cache = FnCache::new(|id: &Id| {
+    let mut cache = FnCache::new(|id: &Id| -> Result<String, String> {
         Ok(if let Some(id) = id.0 {
             sources.get(&id).unwrap().source().text().to_string()
         } else {
